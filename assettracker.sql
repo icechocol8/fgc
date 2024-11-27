@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2024 at 06:35 AM
+-- Generation Time: Nov 27, 2024 at 09:21 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -28,71 +28,26 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `fa_data` (
-  `MovementID` int(11) NOT NULL,
   `MovementDate` date DEFAULT NULL,
-  `AssetMovementType` varchar(50) DEFAULT NULL,
-  `TicketNumber` int(11) DEFAULT NULL,
   `AssetTag` varchar(50) DEFAULT NULL,
   `AssetType` varchar(50) DEFAULT NULL,
-  `FromWorkstation` varchar(50) DEFAULT NULL,
-  `ToWorkstation` varchar(50) DEFAULT NULL,
-  `EmployeeAssignment` varchar(100) DEFAULT NULL,
+  `Workstation` varchar(50) DEFAULT NULL,
+  `Site` varchar(100) DEFAULT NULL,
+  `Location` varchar(100) DEFAULT NULL,
+  `Assignee` varchar(100) DEFAULT NULL,
   `AccountDepartment` varchar(100) DEFAULT NULL,
-  `Timestamp` datetime DEFAULT NULL,
-  `Site` varchar(50) DEFAULT NULL,
-  `AssetChecker` varchar(50) DEFAULT NULL,
-  `AssetListWork` varchar(50) DEFAULT NULL
+  `Function` varchar(100) DEFAULT NULL,
+  `Manager` varchar(100) DEFAULT NULL,
+  `Designation` varchar(100) DEFAULT NULL,
+  `WSDesignation` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `fa_data`
 --
 
-INSERT INTO `fa_data` (`MovementID`, `MovementDate`, `AssetMovementType`, `TicketNumber`, `AssetTag`, `AssetType`, `FromWorkstation`, `ToWorkstation`, `EmployeeAssignment`, `AccountDepartment`, `Timestamp`, `Site`, `AssetChecker`, `AssetListWork`) VALUES
-(1, '2024-10-22', 'Asset Transfer Request', 995634, 'BACTEMP-CPU-01', 'CPU Set', 'BCDP-015', 'BCDP-015', 'F04580 - Gonzales, Joshua Laurel', 'TL', '2024-10-22 15:34:06', 'Home Invest', 'Active', 'BCDP-015');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_users`
---
-
-CREATE TABLE `tbl_users` (
-  `user_id` int(11) NOT NULL,
-  `username` varchar(20) NOT NULL,
-  `password` varchar(20) NOT NULL,
-  `user_access` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tbl_users`
---
-
-INSERT INTO `tbl_users` (`user_id`, `username`, `password`, `user_access`) VALUES
-(1, 'cj', '123', 'admin'),
-(1, 'cj', '123', 'admin'),
-(0, 'cj', '$2y$10$ByeDy9yDkWFQA', ''),
-(0, 'cj', '$2y$10$bQSOvBrKFxX.7', '');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `fa_data`
---
-ALTER TABLE `fa_data`
-  ADD PRIMARY KEY (`MovementID`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `fa_data`
---
-ALTER TABLE `fa_data`
-  MODIFY `MovementID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+INSERT INTO `fa_data` (`MovementDate`, `AssetTag`, `AssetType`, `Workstation`, `Site`, `Location`, `Assignee`, `AccountDepartment`, `Function`, `Manager`, `Designation`, `WSDesignation`) VALUES
+('2024-09-11', 'BAC-0001-20240910', 'CPU Set', 'BCDO-001', 'Home Invest', 'Bacolod', 'F04518 - Oro, Rona', 'Human Resource', 'Shared Services Group', 'Human Resource', 'Office', 'Ground Floor - New Jersey Room - HR Office');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
