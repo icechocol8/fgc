@@ -1,13 +1,17 @@
 <?php
 
-include_once 'fa_Data/fa_Data.php';
-
+include_once 'classes/class.data.php';
 include 'config/config.php';
 
+$page = (isset($_GET['page']) && $_GET['page'] != '') ? $_GET['page'] : '';
+$subpage = (isset($_GET['subpage']) && $_GET['subpage'] != '') ? $_GET['subpage'] : '';
+$action = (isset($_GET['action']) && $_GET['action'] != '') ? $_GET['action'] : '';
+$id = (isset($_GET['id']) && $_GET['id'] != '') ? $_GET['id'] : '';
 
+$fdata = new fdata();
 ?>
 
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
 <head>
     <title>Asset Tracker</title>
@@ -19,23 +23,34 @@ include 'config/config.php';
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="css/custom.css?<?php echo time();?>">
 
-    <body1>
+    <body>
 <div id="container">
     <div id="header"></div>
-    <h2>ASSET TRACKER</h2>
+    <h3>ASSET TRACKER</h3>
     </div>
     <div id="wrapper">
             <div id="menu">
-            <a href="main.php" class="home"><i class="fa-sharp fa-solid fa-house-chimney"></i> HOME</a> 
-                <a href="index.php?page=mc"><i class="mc"></i> MOVEMENT CHECKER</a>
-                <a href="index.php?page=wc" class="wc"><i class="fa-solid fa-calendar"></i> WORKSTATION CHECKER</a>
-                <a href="ASSET_CHECKER?page=ac" class="ac"><i class="fa-solid fa-wallet"></i> ASSET CHECKER</a>
-                <a href="index.php?page=fdata" class="fdata"><i class="fa-solid fa-hand-holding-dollar"></i> FA DATA</a>
+            <a href="main.php" class="home"> HOME |</a> 
+                <a href="index.php?page=mc"><i class="mc"> MOVEMENT CHECKER |</a> 
+                <a href="index.php?page=wc" class="wc"> WORKSTATION CHECKER |</a>
+                <a href="ASSET_CHECKER?page=ac" class="ac"> ASSET CHECKER |</a>
+                <a href="index.php?page=fdata" class="fdata"> FA DATA |</a>
+                <a href="index.php?page=mc"><i class="mc"> MOVEMENT CHECKER |</a>
+                <a href="index.php?page=emp" class="emp"> EMPLOYEES |</a>
+              
+
                 <a href="logout.php" class="move-right"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
             </div>
-            
+            <div id="content">
+                <?php
+                switch($page){
+                            case 'fdata':
+                                require_once 'fa-data/index.php';
+                            break;
+                }
+                ?> 
     </div>
 </div>
-</body1>
+</body>
 </html>
 
